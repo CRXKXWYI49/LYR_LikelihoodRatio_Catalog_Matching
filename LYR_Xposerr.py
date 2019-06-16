@@ -107,6 +107,6 @@ ax.set_title('EER at 90% (E=1.5 keV)')
 ax.grid(ls=':', color='grey', alpha=0.5, zorder=0)
 ax.legend()
 
-#fig.savefig('/Users/Alessandro/Documents/post_TESI/codes/LYR/new_err/xray_errors_puc09.png', bbox_inches="tight", dpi=250)
+#fig.savefig('xray_errors_puc09.png', bbox_inches="tight", dpi=250)
 
 plt.show()
