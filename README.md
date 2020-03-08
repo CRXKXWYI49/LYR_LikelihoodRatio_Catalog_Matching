@@ -25,8 +25,8 @@ For positional errors, fluxes, and flux uncertainties the user can choose from s
 
 The only file to be modified by the user is `LYR_input_parameters.py. Every entry of this file is commented. All the parameter are also explained in the manual.
 
-To run LYR, simply open the terminal and write `python LYR_main.py`
+To run LYR, simply open the terminal and write `python LYR_main.py`.
 
-
+## Other
 A very preliminary draft of the manual can be read and downloaded in the repository.
 For questions and info write to: alessandro.peca@miami.edu
