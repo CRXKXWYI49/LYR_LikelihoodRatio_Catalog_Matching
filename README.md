@@ -23,7 +23,7 @@ If you decide not to use the optional packages, the code obviously needs some ch
 LYR requires two catalogs (input and output). The mandatory quantities are the positions (RA and Dec) in both catalogs and the magnitudes (or fluxes) in the input catalog.
 For positional errors, fluxes, and flux uncertainties the user can choose from several options. Please refer to the manual.
 
-The only file to be modified by the user is `LYR_input_parameters.py. Every entry of this file is commented. All the parameter are also explained in the manual.
+The only file to be modified by the user is `LYR_input_parameters.py`. Every entry of this file is commented. All the parameter are also explained in the manual.
 
 To run LYR, simply open the terminal and write `python LYR_main.py`.
 
