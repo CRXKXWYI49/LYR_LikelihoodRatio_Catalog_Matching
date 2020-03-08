@@ -8,7 +8,7 @@ Source matching between different catalogs at different wavelengths can be compu
 ## Installation
 LYR is written in Python 3.x. A proper operation with Python 2 is not guaranteed.
 No installation required.
-### Packeges
+#### Packages
 LYR is created with the following packages:
 - numpy v1.15 (required)
 - scipy v1.1 (required)
