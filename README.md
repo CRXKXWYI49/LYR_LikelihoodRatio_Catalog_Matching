@@ -17,6 +17,7 @@ LYR is created with the following packages:
 - os (optional)
 - time (optional)
 - mpldatacursors (optional)
+
 If you decide not to use the optional packages, the code obviously needs some changes.
 
 ## Settings
