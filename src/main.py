@@ -35,11 +35,11 @@ def objective_function(
     objective_value = -1 * RLRth * CLRth * LRth
     return objective_value
 
-learning_rate = 0.1
+learning_rate = 1
 beta1 = 0.9
 beta2 = 0.999
 epsilon = 1e-8
-num_iterations = 1000
+num_iterations = 100000
 
 def numerical_gradient(f, params, epsilon):
     grads = np.zeros_like(params, dtype=float)
@@ -73,7 +73,7 @@ def run_gradient_descent(
             print(f"New parameters: {params}")
         return params
 
-initial_params = [3, 8, 10, 30]
+initial_params = [3, 5, 6, 60]
 
 optimized_params = run_gradient_descent(
     objective_function, initial_params
