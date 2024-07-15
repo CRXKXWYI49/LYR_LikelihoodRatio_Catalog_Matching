@@ -3,7 +3,6 @@
 ############################
 
 import numpy as np
-print('\n')
 print('Reading catalogues and parameters..')
 
 
@@ -20,11 +19,6 @@ r_max_nm = 20
 
 # distributions bins:
 distrib_bins = 21
-
-# results:
-path_LR = '../'
-path_output = path_LR + 'output/'
-path_images = path_LR + 'images/'
 
 # output catalogue errors moltiplicative factor
 plus_erf = 1 # wavdetect errors factor, put 1 if there isn't
@@ -45,18 +39,7 @@ delta_f2_fluxerr = 0 # 0: static error; 1: every single error for the input cat
 
 # python interactions
 iwp = True
-cursors = False
-save_images = True
-save_output = True
 
-# sdding string to all output images
-add_str = 'Final_XJ'
-# adding string to images titles
-add_title = add_str
-
-# out catalog and info
-filename_LR = 'LR_' + add_str + '.txt'
-filename_outinfo = 'LR_outinfo_' + add_str + '.txt'
 
 
 ############################################################### import data ########
@@ -64,7 +47,7 @@ filename_outinfo = 'LR_outinfo_' + add_str + '.txt'
 
 ######################################################################################################## ONIR - X:
 # Input catalogue:
-file_input = "/Users/admin/Documents/GitHub/LYR_PythonLikelihoodRatio/edff_LYR.txt"
+file_input = "/Users/admin/Documents/GitHub/LYR_LikelihoodRatio_Catalog_Matching/src/data/edff_LYR.txt"
 
 data_input = np.genfromtxt(file_input, delimiter=',')
 ID_input = np.array(data_input[:,0])
@@ -74,7 +57,7 @@ mag_input = np.array(data_input[:,3])
 
 
 # Output catalogue:
-file_output = "/Users/admin/Documents/GitHub/LYR_PythonLikelihoodRatio/erass_LYR.txt"
+file_output = "/Users/admin/Documents/GitHub/LYR_LikelihoodRatio_Catalog_Matching/src/data/erass_LYR.txt"
 
 
 data_output = np.genfromtxt(file_output, delimiter=',')
@@ -88,7 +71,7 @@ dec_err_output = np.array(data_output[:,4]) / 3600
 #---------------------------------------------------------------------- for sigma selection ------
 
 # Sigma input (ONIR):
-file1 = "/Users/admin/Documents/GitHub/LYR_PythonLikelihoodRatio/edff_LYR.txt"
+file1 = "/Users/admin/Documents/GitHub/LYR_LikelihoodRatio_Catalog_Matching/src/data/edff_LYR.txt"
 data1 = np.genfromtxt(file1, delimiter=',')
 ID1_input_s = np.array(data1[:,0])
 ra1_input_s = np.array(data1[:,1])

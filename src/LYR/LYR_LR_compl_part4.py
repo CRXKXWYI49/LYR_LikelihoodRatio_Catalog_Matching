@@ -40,7 +40,7 @@ if len(RCmax_index) > 1:
 	RCmax_index = int(RCmax_index[0])
 else:
 	RCmax_index = int(RCmax_index)
-print( '\nLRth: ' + str(round(LRth[RCmax_index],2)))
+print( 'LRth: ' + str(round(LRth[RCmax_index],2)))
 print( 'C[LRth]: ' + str(round(C[RCmax_index],2)))
 print( 'R[LRth]: ' + str(round(R[RCmax_index],2)))
 
@@ -53,33 +53,5 @@ for i in range(len(lr_LR)):
 print(str(a) + '/' + str(len(lr_LR)) + ' total input sources with LR > LRth (' + str(round((100*a/len(lr_LR)),2)) + '%)')
 print(str(b) + '/' + str(Nx) + ' output sources with a counterpart with LR > LRth (' + str(round((100*b/Nx),2)) + '%)\n')
 
-if save_output == True:
-	outinfo = open(path_output+filename_outinfo,"a")
-	outinfo.write('\n(R+C)/2 max: ' + str(round(np.max(RC),2)) + '\n'
-				 + 'LRth: ' + str(round(LRth[RCmax_index],2)) + '\n'
-				 + 'C[LRth]: ' + str(round(C[RCmax_index],2)) + '\n'
-				 + 'R[LRth]: ' + str(round(R[RCmax_index],2)) + '\n'
-				 + str(a) + '/' + str(len(lr_LR)) + ' total sources with LR > LRth (' + str(round((100*a/len(lr_LR)),2)) + '%)\n'
-				 + str(b) + '/' + str(Nx) + ' output sources with a counterpart with LR > LRth (' + str(round((100*b/Nx),2)) + '%)\n')
-	outinfo.close()
-
 print('... done.\n')
-
-fig6, ax = plt.subplots()
-
-ax.plot(LRth, RC, color='r', label='(R+C)/2', zorder=3)
-ax.plot(LRth, R, color='mediumblue', ls='--', label='R', zorder=3)
-ax.plot(LRth, C, color='mediumblue', ls=':', label='C', zorder=3)
-ax.axvline(color='r', lw=1, ls='--', alpha=0.6, x=LRth[RCmax_index])
-
-ax.set_xlabel('$LR_{th}$')
-ax.grid(ls=':', color='grey', alpha=0.3, zorder=0)
-ax.tick_params(axis='both', which='both', direction='in', top=True, right=True)
-ax.set_title('Completness' + add_title)
-ax.set_xscale('log')
-ax.legend()
-
-if save_images == True:
-	fig6.savefig(path_images+'completeness_'+str(int(r_in_tm))+'rlr'+str(int(r_lr))+add_str+'.png',
-				 bbox_inches="tight", dpi=250)
 

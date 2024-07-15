@@ -9,18 +9,9 @@ import LYR_functions as lyr
 from LYR_input_parameters import *
 from LYR_sigma_part1 import *
 
-# outuput file info:
-if save_output == True:
-	outinfo = open(path_output+filename_outinfo,"a")
-	outinfo.write('\nSearching radii:\n'
-				  + 'r_fr = ' + str(r_fr) + ';  r_in_tn = ' + str(r_in_tm)
-				  + ';  r_min_nm = ' +str(r_min_nm) + ';  r_max_nm = ' +str(r_max_nm)
-				  + ';  r_lr = ' +str(r_lr) + '\n')
-	outinfo.close()
-
 ###################################################################### f(r) ########
 fig1, ax = plt.subplots()
-print('\nFinding FR...')
+print('Finding FR...')
 
 r_in_tree = np.column_stack((ra_input*3600, dec_input*3600))
 r_out_tree = np.column_stack((ra_output*3600, dec_output*3600))
@@ -44,17 +35,10 @@ for i in range(len(neighbors_idx)):
 
 		# call FR:
 		r_tot, fr_tot = lyr.FR(sigma_out_fr, sigma_in_fr, Dra_fr, Ddec_fr)
-		ax.scatter(r_tot, fr_tot, c='r', marker='.', zorder=3)
 
 	prog = 100*i/len(neighbors_idx)
 	print (str(int(prog)+1)+'%', end="\r")
-
-ax.set_yscale('log')
-ax.tick_params(axis='both', which='both', direction='in', top=True, right=True)
-ax.set_xlabel('r')
-ax.set_ylabel('f(r)')
-ax.grid(ls=':', color='grey', alpha=0.4, zorder=0)
-
+	
 print('\n... done.')
 
 
@@ -173,14 +157,9 @@ Nx = len(ID_output)
 Q = 1 - (d/Nx)
 print('\nNin,tot=',N1, '; Nout=', Nx, '; Q=', round(Q,2))
 
-if save_output == True:
-	outinfo = open(path_output+filename_outinfo,"a")
-	outinfo.write('\n' + 'Nin,tot = ' + str(N1) + ';  Nout = ' + str(Nx) + ';  Q = ' +str(round(Q,2)) + '\n')
-	outinfo.close()
 
 
 
-fig3, ax = plt.subplots()
 bb=0
 for b in range(len(mag_input)):
 	if mag_input[b] != nomag:
@@ -194,11 +173,6 @@ for b in range(len(mag_input)):
 bins = np.linspace(min(tmp_mag_input),max(tmp_mag_input),distrib_bins)
 bar_width = bins[1]-bins[0]
 bin_height, bin_edges, patches = ax.hist(n_mag_in, bins=bins, color='r', alpha=0.5)
-ax.set_ylabel('num. sources')
-ax.set_xlabel('input magnitude/flux')
-ax.set_title('Total background n(m)')
-ax.tick_params(axis='both', which='both', direction='in', top=True, right=True)
-
 
 # ... total(m):
 fig4, ax = plt.subplots()
@@ -231,7 +205,6 @@ n_mag_in = n_mag_in[:, np.newaxis]
 kde = KernelDensity(kernel='gaussian', bandwidth=bar_width).fit(n_mag_in)
 log_dens = kde.score_samples(Xplot_nm)
 Yplot_nm = np.exp(log_dens)*sum(bin_height)*bar_width
-#ax.plot(Xplot_nm[:, 0], Yplot_nm, ':', color='mediumblue', label='n(m)')
 nm_interp = interpolate.interp1d(Xplot_nm[:, 0], Yplot_nm)
 
 
@@ -252,20 +225,6 @@ Xplot_realm = np.linspace(min(tmp_mag_input),max(tmp_mag_input),1000)[:, np.newa
 kde = KernelDensity(kernel='gaussian', bandwidth=bar_width).fit(real_xhist)
 log_dens = kde.score_samples(Xplot_realm)
 Yplot_realm = np.exp(log_dens)*sum(y_realm)*bar_width
-ax.plot(Xplot_realm[:, 0], Yplot_realm, '-', color='k', label='real(m)')
-
-
-ax.tick_params(axis='both', which='both', direction='in', top=True, right=True)
-ax.set_ylabel('num. sources')
-ax.set_xlabel('Input magnitude/flux')
-ax.set_title('Counterparts magnitude distribution' + add_title)
-ax.legend(loc='upper left')
-#ax.grid(ls=':', color='grey', alpha=0.5)
-#plt.gca().invert_xaxis()
-if save_images == True:
-	fig4.savefig(path_images+'cparts_mag_distrib_rt'+str(int(r_in_tm))+'rlr'+str(int(r_lr))+add_str+'.png',
-				 bbox_inches="tight", dpi=250)
-
 
 
 

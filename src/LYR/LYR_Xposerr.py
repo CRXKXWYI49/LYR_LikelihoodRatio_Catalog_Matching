@@ -93,20 +93,3 @@ for i in range(len(t)):
 	rpsf_tmp = PSF_radius(t[i])
 	rpsf = np.append(rpsf,rpsf_tmp)
 
-
-fig,ax=plt.subplots()
-
-ax.plot(t_,rpsf*3600, color='mediumblue', zorder=3, label='Hickox+06')
-ax.plot(offaxis*60, rr90*3600, color='darkorange', alpha=0.8, fillstyle='none', lw=0,
-		marker='o', zorder=4, label='Data')
-
-ax.set_xlabel('offaxis [arcmin]')
-ax.set_ylabel('PSF radius [arcsec]')
-#ax.set_yscale('log')
-ax.set_title('EER at 90% (E=1.5 keV)')
-ax.grid(ls=':', color='grey', alpha=0.5, zorder=0)
-ax.legend()
-
-#fig.savefig('xray_errors_puc09.png', bbox_inches="tight", dpi=250)
-
-plt.show()

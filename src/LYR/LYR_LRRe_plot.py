@@ -3,10 +3,7 @@ import numpy as np
 from LYR_input_parameters import *
 
 
-if cursors == True:
-	from mpldatacursor import datacursor
 
-filename = path_output+filename_LR
 do,di,rain,decin,magin,r,fr,df,fdf,qm,nm,lr,rel = np.genfromtxt(filename, usecols=(0,4,5,6,7,8,9,10,11,12,13,14,15), unpack=True)
 
 fig, ax = plt.subplots(1,2, figsize=(10,4))
@@ -27,11 +24,6 @@ ax[0].tick_params(axis='both', which='both', direction='in', top=True, right=Tru
 ax[1].tick_params(axis='both', which='both', direction='in', top=True, right=True)
 
 
-
-if save_images == True:
-	fig.savefig(path_images+'LRrel_'+str(int(r_in_tm))+'rlr'+str(int(r_lr))+add_str+'.png',
-				bbox_inches="tight", dpi=250)
-
 fig, ax = plt.subplots()
 for i in range(len(lr)):
 
@@ -49,30 +41,6 @@ for i in range(len(lr)):
 	lr_ = round(lr[i],3)
 	rel_ = round(rel[i],3)
 
-	if lr[i] != 0.:
-		if cursors == True:
-			ax.scatter(lr[i], rel[i], marker='.', color='mediumblue',
-					  label='IDout: {}'.format(do_)+'\nIDint: {}'.format(di_)+'\nLR: {}'.format(lr_)+'\nRe: {}'.format(rel_)
-					  + '\nq(m): {}'.format(qm_) + '\nn(m): {}'.format(nm_) + '\nf(r): {}'.format(fr_) + '\nf(df): {}'.format(fdf_)
-					  + '\nr: {}'.format(r_) + '\ndf: {}'.format(df_) + '\nmag: {}'.format(magin_), zorder=3)
-		elif cursors== False:
-			ax.scatter(lr[i], rel[i], marker='.', color='mediumblue')
 
-
-
-ax.set_xscale('log')
-ax.set_xlabel('LR')
-ax.set_ylabel('Reliability')
-ax.tick_params(axis='both', which='both', direction='in', top=True, right=True)
-ax.grid(ls=':', color='grey', alpha=0.4)
-ax.set_title(add_title)
-
-if cursors == True:
-	datacursor(xytext=(15, 15), display='multiple', draggable=True,
-			   bbox=dict(fc='white', alpha=1),formatter='{label}'.format)
-
-if save_images == True:
-	fig.savefig(path_images+'LRandrel_'+str(int(r_in_tm))+'rlr'+str(int(r_lr))+add_str+'.png',
-				bbox_inches="tight", dpi=250)
 
 #plt.show()
