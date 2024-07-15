@@ -33,7 +33,7 @@ for i in range(len(LRth)):
 	RC_ = (R_+C_)/2
 	RC = np.append(RC, RC_)
 
-RCmax_index = np.where(RC==np.max(RC))
+RCmax_index = np.where(RC==np.nanmax(RC))
 
 RCmax_index = RCmax_index[0]
 if len(RCmax_index) > 1:

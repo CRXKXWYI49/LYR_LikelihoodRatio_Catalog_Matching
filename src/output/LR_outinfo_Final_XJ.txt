@@ -1,0 +1,24 @@
+###################
+### OUTPUT INFO ###
+###################
+
+
+Searching radii:
+r_fr = 8;  r_in_tn = 3;  r_min_nm = 10;  r_max_nm = 20;  r_lr = 8
+
+Nin,tot = 118;  Nout = 247;  Q = 0.48
+
+40 unmatched sources (17 %): 
+[  10.   28.   63.   69.   82.   97.  256.  257.  366.  381.  382.  387.
+  406.  438.  440.  448.  479.  616.  623.  655.  675.  901. 1008.   51.
+   78.  359.  472.  650.  689.  854.  917.  929.   72.  292.  297.  364.
+  458.  754.  898.  950.]
+
+(R+C)/2 max: 0.53
+LRth: 4.21
+C[LRth]: 0.11
+R[LRth]: 0.95
+29/1138 total sources with LR > LRth (2.55%)
+29/247 output sources with a counterpart with LR > LRth (11.74%)
+
+Computational time: 11.7 seconds.
