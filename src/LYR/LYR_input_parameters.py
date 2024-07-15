@@ -8,32 +8,32 @@ print('Reading catalogues and parameters..')
 
 
 # f(r) searching radius:
-r_fr = 5 # in arcsec
+r_fr = 8 # in arcsec
 # total(m) searching radius:
-r_in_tm = 2 # in arcsec
+r_in_tm = 3 # in arcsec
 # LR searching radius for FR
-r_lr = 5 #in arcsec
+r_lr = 8 #in arcsec
 
 # n(m) annulus searching annulus:
-r_min_nm = 5   # in arcsec
-r_max_nm = 30
+r_min_nm = 10   # in arcsec
+r_max_nm = 20
 
 # distributions bins:
 distrib_bins = 21
 
 # results:
-path_LR = '/path/to/the/code/'
+path_LR = '../'
 path_output = path_LR + 'output/'
 path_images = path_LR + 'images/'
 
 # output catalogue errors moltiplicative factor
 plus_erf = 1 # wavdetect errors factor, put 1 if there isn't
 
-# sigma finder ('all' == every single source; '1sigma' == 1 sigma mean errror):
-sigma_out_finder = 'all'
+# sigma finder ('all' == everwy single source; '1sigma' == 1 sigma mean errror):
+sigma_out_finder = '1sigma'
 
 # input catalog type(0 = static pos. error (put 0 below is there are no errors); 1 = usual errors;  2 = two catalogue with no errors):
-input_cat_type = 2
+input_cat_type = 0
 
 # catalogues parameters:
 noxy = -99. # coords of undetected sources
@@ -64,33 +64,32 @@ filename_outinfo = 'LR_outinfo_' + add_str + '.txt'
 
 ######################################################################################################## ONIR - X:
 # Input catalogue:
-file_input = "/path/to/the/catalog/catalog.txt"
+file_input = "/Users/admin/Documents/GitHub/LYR_PythonLikelihoodRatio/edff_LYR.txt"
 
-
-data_input = np.genfromtxt(file_input)
+data_input = np.genfromtxt(file_input, delimiter=',')
 ID_input = np.array(data_input[:,0])
 ra_input = np.array(data_input[:,1])
 dec_input = np.array(data_input[:,2])
-mag_input = np.array(data_input[:,7])
+mag_input = np.array(data_input[:,3])
 
 
 # Output catalogue:
-file_output = "/path/to/the/catalog/catalog.txt"
+file_output = "/Users/admin/Documents/GitHub/LYR_PythonLikelihoodRatio/erass_LYR.txt"
 
 
-data_output = np.genfromtxt(file_output)
+data_output = np.genfromtxt(file_output, delimiter=',')
 ID_output = np.array(data_output[:,0])
 ra_output = np.array(data_output[:,1])
 dec_output = np.array(data_output[:,2])
-ra_err_output = np.array(data_output[:,4])
-dec_err_output = np.array(data_output[:,5])
+ra_err_output = np.array(data_output[:,3]) / 3600
+dec_err_output = np.array(data_output[:,4]) / 3600
 
 
 #---------------------------------------------------------------------- for sigma selection ------
 
 # Sigma input (ONIR):
-file1 = "/path/to/the/catalog/catalog.txt"
-data1 = np.genfromtxt(file1)
+file1 = "/Users/admin/Documents/GitHub/LYR_PythonLikelihoodRatio/edff_LYR.txt"
+data1 = np.genfromtxt(file1, delimiter=',')
 ID1_input_s = np.array(data1[:,0])
 ra1_input_s = np.array(data1[:,1])
 dec1_input_s = np.array(data1[:,2])
