@@ -6,8 +6,8 @@ from scipy.optimize import curve_fit
 from scipy.spatial import KDTree
 
 import LYR_functions as lyr
-from LYR_input_parameters import *
-from LYR_sigma_part1 import *
+from LYR.LYR_input_parameters import *
+from LYR.LYR_sigma_part1 import *
 
 # outuput file info:
 if save_output == True:

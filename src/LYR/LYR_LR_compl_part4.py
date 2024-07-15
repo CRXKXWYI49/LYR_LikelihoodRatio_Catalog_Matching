@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 import LYR_functions as lyr
-from LYR_input_parameters import *
+from LYR.LYR_input_parameters import *
 from LYR_LR_Re_part3 import *
 
 

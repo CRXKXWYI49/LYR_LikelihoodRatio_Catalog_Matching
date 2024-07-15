@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 import LYR_functions as lyr
-from LYR_input_parameters import *
+from LYR.LYR_input_parameters import *
 import time
 
 
@@ -16,7 +16,7 @@ if not os.path.isdir(path_output):
 	os.mkdir(path_output)
 
 
-from LYR_LR_compl_part4 import *
+from LYR.LYR_LR_compl_part4 import *
 
 if save_output == True:
 	from LYR_LRRe_plot import *
