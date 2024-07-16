@@ -64,8 +64,8 @@ data_output = np.genfromtxt(file_output, delimiter=',')
 ID_output = np.array(data_output[:,0])
 ra_output = np.array(data_output[:,1])
 dec_output = np.array(data_output[:,2])
-ra_err_output = np.array(data_output[:,3]) / 3600
-dec_err_output = np.array(data_output[:,4]) / 3600
+ra_err_output = np.array(data_output[:,3])
+dec_err_output = np.array(data_output[:,4])
 
 
 #---------------------------------------------------------------------- for sigma selection ------
