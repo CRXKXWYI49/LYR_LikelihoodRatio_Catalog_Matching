@@ -68,7 +68,7 @@ def run_gradient_descent(
             if(params[0] > params[1]): params[1] = params[0] + epsilon
             if(params[1] > params[2]): params[2] = params[1] + epsilon
             if(params[2] > params[3]): params[3] = params[2] + epsilon 
-            if(params[3] > 60): params[3] = 50
+            if(params[3] > 50): params[3] = 50
             cost = function(*params)
             print(f"Iteration {i}, Cost: {cost}")
             print(f"New parameters: {params}")
