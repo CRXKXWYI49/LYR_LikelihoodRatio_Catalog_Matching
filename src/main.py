@@ -31,8 +31,8 @@ def objective_function(
         data1,
         21,
     )
-    print(f"Completeness: {CLRth:.16f} Reliability: {RLRth:.16f} LR-Threshold: {LRth:.16f}")
-    objective_value = -1 * RLRth * CLRth * LRth
+    print(f"Completeness: {CLRth:.6f} Reliability: {RLRth:.6f} LR-Threshold: {LRth:.6f}")
+    objective_value = -1 * (RLRth + CLRth)
     return objective_value
 
 learning_rate = 1
@@ -68,12 +68,13 @@ def run_gradient_descent(
             if(params[0] > params[1]): params[1] = params[0] + epsilon
             if(params[1] > params[2]): params[2] = params[1] + epsilon
             if(params[2] > params[3]): params[3] = params[2] + epsilon 
+            if(params[3] > 60): params[3] = 50
             cost = function(*params)
             print(f"Iteration {i}, Cost: {cost}")
             print(f"New parameters: {params}")
         return params
 
-initial_params = [3, 5, 6, 60]
+initial_params = [5, 6, 10, 30]
 
 optimized_params = run_gradient_descent(
     objective_function, initial_params

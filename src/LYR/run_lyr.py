@@ -47,20 +47,10 @@ def run_lyr(
 
     #---------------------------------------------------------------------- for sigma selection ------
 
-    # Sigma input (ONIR):
 
-    ID1_input_s = np.array(data1[:,0])
-    ra1_input_s = np.array(data1[:,1])
-    dec1_input_s = np.array(data1[:,2])
-    mag1_input_s = np.array(data1[:,3])
 
     sigma_input = 0 # 0.3 per cosmos
 
-
-    # Sigma output (X-ray):
-    ID_output_s = ID_output
-    ra_output_s = ra_output
-    dec_output_s = dec_output
     ra_err_output_s = ra_err_output
     dec_err_output_s = dec_err_output
 
@@ -94,7 +84,7 @@ def run_lyr(
 
     tree = KDTree(r_in_tree)
 
-    neighbors_idx = tree.query_ball_point(r_out_tree, r=r_fr)
+    neighbors_idx = tree.query_ball_point(r_out_tree, r=r_fr, workers=8)
 
     for i in range(len(neighbors_idx)):
         for j in range(len(neighbors_idx[i])):
@@ -110,7 +100,6 @@ def run_lyr(
                 sigma_in_fr = sigma_input[j]
 
             # call FR:
-            r_tot, fr_tot = lyr.FR(sigma_out_fr, sigma_in_fr, Dra_fr, Ddec_fr)
 
         prog = 100*i/len(neighbors_idx)
         
@@ -167,7 +156,7 @@ def run_lyr(
 
     #-------------------------------------------------------------- total(m):
 
-    neigh_idx_totm = tree.query_ball_point(r_out_tree, r=r_in_tm)
+    neigh_idx_totm = tree.query_ball_point(r_out_tree, r=r_in_tm, workers=8)
 
     a=0
     for i in range(len(neigh_idx_totm)):
@@ -297,7 +286,7 @@ def run_lyr(
 
 
     ############################################################# LR and Reliability ###
-    neigh_idx_lr = tree.query_ball_point(r_out_tree, r=r_lr)
+    neigh_idx_lr = tree.query_ball_point(r_out_tree, r=r_lr, workers=8)
 
     d=0
     for i in range(len(neigh_idx_lr)):
@@ -323,14 +312,11 @@ def run_lyr(
     lr_flux_output = np.zeros(d)
     lr_fluxerr_output = np.zeros(d)
     lr_flux_input = np.zeros(d)
-    lr_fluxerr_input = np.zeros(d)
     rel = []
     lr_noID = []
     flag = []
     fr_r_tmp = np.zeros(d)
     fr_fr_tmp = np.zeros(d)
-    fdf_delta_tmp = np.zeros(d)
-    fdf_fdf_tmp = np.ones(d)
     nnm_ = np.zeros(d)
     qm_ = np.zeros(d)
 
@@ -384,7 +370,6 @@ def run_lyr(
         if len(lr_singleXID) != 0.:
             summLR = np.sum(lr_singleXID)
             single_outID_LR = []
-            rel_sum_tmp = []
             for k in range(len(lr_singleXID)):
                 rel_tmp = lyr.Re(summLR, lr_singleXID[k], Q)
                 rel = np.append(rel, rel_tmp)
@@ -402,9 +387,7 @@ def run_lyr(
                     flag = np.append(flag, flag_tmp)
         else:
             lr_noID = np.append(lr_noID, ID_output[i])
-        prog = 100*i/len(ID_output)
 
-    non_matched=len(lr_noID)/len(ID_output)
 
     ############################################################# Completness ###
 
