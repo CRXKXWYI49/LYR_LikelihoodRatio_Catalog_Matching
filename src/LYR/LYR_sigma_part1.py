@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 
 import LYR_functions as lyr
-from LYR.LYR_input_parameters import *
+from LYR_input_parameters import *
 
 
 ##################################### output file info:

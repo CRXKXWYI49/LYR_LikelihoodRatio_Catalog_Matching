@@ -8,15 +8,15 @@ print('Reading catalogues and parameters..')
 
 
 # f(r) searching radius:
-r_fr = 8 # in arcsec
+r_fr = 6 # in arcsec
 # total(m) searching radius:
-r_in_tm = 3 # in arcsec
+r_in_tm = 5 # in arcsec
 # LR searching radius for FR
-r_lr = 8 #in arcsec
+r_lr = 6 #in arcsec
 
 # n(m) annulus searching annulus:
 r_min_nm = 10   # in arcsec
-r_max_nm = 20
+r_max_nm = 30
 
 # distributions bins:
 distrib_bins = 21
@@ -64,7 +64,7 @@ filename_outinfo = 'LR_outinfo_' + add_str + '.txt'
 
 ######################################################################################################## ONIR - X:
 # Input catalogue:
-file_input = "/Users/admin/Documents/GitHub/LYR_PythonLikelihoodRatio/edff_LYR.txt"
+file_input = "/Users/admin/Documents/GitHub/LYR_LikelihoodRatio_Catalog_Matching/src/data/edff_LYR.txt"
 
 data_input = np.genfromtxt(file_input, delimiter=',')
 ID_input = np.array(data_input[:,0])
@@ -74,7 +74,7 @@ mag_input = np.array(data_input[:,3])
 
 
 # Output catalogue:
-file_output = "/Users/admin/Documents/GitHub/LYR_PythonLikelihoodRatio/erass_LYR.txt"
+file_output = "/Users/admin/Documents/GitHub/LYR_LikelihoodRatio_Catalog_Matching/src/data/erass_LYR.txt"
 
 
 data_output = np.genfromtxt(file_output, delimiter=',')
@@ -88,7 +88,7 @@ dec_err_output = np.array(data_output[:,4]) / 3600
 #---------------------------------------------------------------------- for sigma selection ------
 
 # Sigma input (ONIR):
-file1 = "/Users/admin/Documents/GitHub/LYR_PythonLikelihoodRatio/edff_LYR.txt"
+file1 = "/Users/admin/Documents/GitHub/LYR_LikelihoodRatio_Catalog_Matching/src/data/edff_LYR.txt"
 data1 = np.genfromtxt(file1, delimiter=',')
 ID1_input_s = np.array(data1[:,0])
 ra1_input_s = np.array(data1[:,1])

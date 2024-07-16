@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from LYR.LYR_input_parameters import *
+from LYR_input_parameters import *
 
 
 if cursors == True:
